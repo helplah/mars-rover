@@ -3,18 +3,26 @@
 const { getUserInput, cleanUp } = require("./utils/readline-helper");
 
 const main = async () => {
+  /*
+  const validateInput = input => {
+    
+    
+  }*/
+
   const dimension = await getUserInput(
     "Specify the size of the Mars map (e.g. 5 5):"
   );
-
-  const width = dimension.split(" ")[0];
-  const height = dimension.split(" ")[1];
+  const width = parseInt(input.split(" ")[0]);
+  const height = parseInt(input.split(" ")[1]);
 
   console.log("the size of map is ", width, height);
 
   const initialLocation = await getUserInput(
     "Specify the initial coordinates of the mars rover (e.g. 1 2):"
   );
+
+  const xCoordinate = initialLocation.split(" ")[0];
+  const yCoordinate = initialLocation.split(" ")[1];
 
   console.log("the initial location is ", initialLocation);
 
