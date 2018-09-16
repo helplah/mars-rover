@@ -30,6 +30,8 @@ const main = async () => {
     "Specify the initial direction of the mars rover (e.g. N or S or W or E):"
   );
 
+  const direction = initialDirection.split(" ")[0];
+
   console.log("the initial direction is ", initialDirection);
 
   const commands = await getUserInput(
