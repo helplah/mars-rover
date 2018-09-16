@@ -32,14 +32,18 @@ const main = async () => {
     }
   } while (flag);
 
-  /*
   do {
+    flag = true;
     const initialLocation = await getUserInput(
       "Specify the initial coordinates of the mars rover (e.g. 1 2):"
     );
-  } while();
-  
-  console.log("the initial location is ", initialLocation); */
+    const location = validateCoordinates(initialLocation);
+
+    if (location.x != null && location.y != null) {
+      console.log("the initial location is ", location);
+      flag = false;
+    }
+  } while (flag);
 
   const initialDirection = await getUserInput(
     "Specify the initial direction of the mars rover (e.g. N or S or W or E):"
