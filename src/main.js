@@ -3,28 +3,43 @@
 const { getUserInput, cleanUp } = require("./utils/readline-helper");
 
 const main = async () => {
+  const coordinatesRegex = /[1-9]/g;
+  const charRegex = /[a-z]/gi;
+  let flag = true;
+
+  const validateCoordinates = coordinates => {
+    const xCoordinate = coordinates.match(coordinatesRegex)[0];
+    const yCoordinate = coordinates.match(coordinatesRegex)[1];
+
+    if (xCoordinate !== null && yCoordinate !== null) {
+      return { x: xCoordinate, y: yCoordinate };
+    }
+  };
+
+  const validateChar = char => {
+
+  };
+
+  do {
+    const dimension = await getUserInput(
+      "Specify the size of the Mars map (e.g. 5 5):"
+    );
+    const coordinate = validateCoordinates(dimension);
+
+    if (coordinate.x != null && coordinate.y != null) {
+      console.log("the size of map is ", coordinate.x, coordinate.y);
+      flag = false;
+    }
+  } while (flag);
+
   /*
-  const validateInput = input => {
-    
-    
-  }*/
-
-  const dimension = await getUserInput(
-    "Specify the size of the Mars map (e.g. 5 5):"
-  );
-  const width = parseInt(input.split(" ")[0]);
-  const height = parseInt(input.split(" ")[1]);
-
-  console.log("the size of map is ", width, height);
-
-  const initialLocation = await getUserInput(
-    "Specify the initial coordinates of the mars rover (e.g. 1 2):"
-  );
-
-  const xCoordinate = initialLocation.split(" ")[0];
-  const yCoordinate = initialLocation.split(" ")[1];
-
-  console.log("the initial location is ", initialLocation);
+  do {
+    const initialLocation = await getUserInput(
+      "Specify the initial coordinates of the mars rover (e.g. 1 2):"
+    );
+  } while();
+  
+  console.log("the initial location is ", initialLocation); */
 
   const initialDirection = await getUserInput(
     "Specify the initial direction of the mars rover (e.g. N or S or W or E):"
